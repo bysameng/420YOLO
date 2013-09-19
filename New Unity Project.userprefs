@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Shoost.cs">
+    <Files>
+      <File FileName="Assets/Scripts/GUITest.cs" Line="15" Column="2" />
+      <File FileName="Assets/Scripts/Shoost.cs" Line="54" Column="61" />
+      <File FileName="Assets/Triggers/triggerMLG.cs" Line="25" Column="32" />
+      <File FileName="Assets/Scripts/MLGeffects/MLGeffects.cs" Line="30" Column="21" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
