@@ -6,7 +6,7 @@ public class GUITest : MonoBehaviour {
 	private bool menu;
 	
 	void OnGUI(){
-		float rotationPower = (GameObject.Find ("Player").GetComponent<RotationCounter>()).powerToGUI;
+		float rotationPower = GameObject.Find ("FPSCamera").GetComponent<vp_FPCamera>().myRotationCounter.powerToGUI;
 		GUI.Box (new Rect(0,0,100,50), rotationPower.ToString ());
 		
 		if (Input.GetKeyDown(KeyCode.Escape))

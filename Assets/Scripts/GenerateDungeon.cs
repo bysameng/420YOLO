@@ -42,13 +42,13 @@ public class GenerateDungeon : MonoBehaviour {
 	}
 	
 	void DrawCube(float x, float y){
-		GameObject myCube = (GameObject)Instantiate(cube, new Vector3(x, 1, y), Quaternion.identity);
+		//GameObject myCube = (GameObject)Instantiate(cube, new Vector3(x, 1, y), Quaternion.identity);
 	}
 		
 		
 	void DrawEmptyRoom (int x, int y, int length, int width) {
 		float xsize = cube.renderer.bounds.size.x; 
-		Vector3 roomPosition = new Vector3 (x, 1, y);
+		//Vector3 roomPosition = new Vector3 (x, 1, y);
 		for (float i = 0; i < (float)length+xsize*2; i+=xsize){
 			DrawCube (x, y+i);
 			DrawCube (x+width+xsize, y+i);

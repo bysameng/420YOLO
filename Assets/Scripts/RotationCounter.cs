@@ -7,6 +7,9 @@ public class RotationCounter : MonoBehaviour {
 	private float rotationCurrent = 0f;
 	private float rotationDelta = 0f;
 	
+	private float rotSecond = 0.5f;
+	private float rotationAgo;
+	
 	//true means clockwise
 	private bool rotationDirection = true;
 	private bool rotationDirectionLast = false;
@@ -19,6 +22,7 @@ public class RotationCounter : MonoBehaviour {
 	private float timer = 1.0f;
 	
 	public float rotationPower = 0f;
+	public float rotationPowerLast = 0f;
 	
 	public float powerToGUI;
 	
@@ -31,37 +35,58 @@ public class RotationCounter : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public float UpdateRotation (float rotation) {
+		if (rotationPowerLast > 0){
+			rotSecond -= Time.deltaTime;
+			if (rotSecond <= 0){
+				rotSecond = .3f;
+				rotationPowerLast = 0f;
+			}
+				
+
+		}
 		
-		rotationCurrent = transform.localEulerAngles.y;
+		rotationDelta = Mathf.Abs(rotation);
 		
-		if (Input.GetAxis("Mouse X") > 0)
+		if (Input.GetAxis("Mouse X") > 0){
 			rotationDirection = true;
-		else if (Input.GetAxis ("Mouse X") < 0)
+		}
+		else if (Input.GetAxis ("Mouse X") < 0){
 			rotationDirection = false;
+		}
 		
+		/*
 		if (rotationDirection == true)
 			rotationDelta = Mathf.Abs((rotationCurrent - rotationLast + 360f) % 360);
 		else if (rotationDirection == false)
 			rotationDelta = Mathf.Abs((rotationLast - rotationCurrent + 360f) % 360);
+		*/
 		
 		if (rotationDirection != rotationDirectionLast){
+			rotationPowerLast = rotationPower;
+			rotationPower = 0f;
 			powerAdd = false;
 		}
 		
-		if (rotationDelta < 0.3f)
+		
+			
+		
+		if (rotationDelta < 3.0f){
 			timer -= Time.deltaTime;
+			}
 		else timer = 1.0f;
 		
-		
-		
-		if (powerAdd)
-			rotationPower += rotationDelta;
+		rotationPower += rotationDelta;
+		/*
+		if (powerAdd){
+			
+		}
 		
 		if (!powerAdd){
 			directionFrameCounter -= Time.deltaTime;
 			timer -= Time.deltaTime;
 		}
+		
 		
 		if (directionFrameCounter <= 0){
 			powerAdd = true;
@@ -69,10 +94,10 @@ public class RotationCounter : MonoBehaviour {
 			rotationPower = rotationDelta;
 			directionFrameCounter = 0.1f;
 		}
-		
+		*/
 		
 		if (rotationPower < 0){
-			//rotationPower = rotationDelta;
+			rotationPower = rotationDelta;
 		}
 
 		
@@ -85,8 +110,12 @@ public class RotationCounter : MonoBehaviour {
 		rotationDirectionLast = rotationDirection;
 		
 		powerToGUI = rotationPower;
-	
-		damage = calculatePower(rotationPower);
+		if (rotationPowerLast > rotationPower)
+			damage = calculatePower (rotationPowerLast);
+		else 
+			damage = calculatePower(rotationPower);
+		
+		return damage;
 		
 	
 	}

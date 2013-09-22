@@ -3,26 +3,19 @@ using System.Collections;
 
 public class triggerMLG : MonoBehaviour {
 	
-	public GameObject mlgHuge;
+	public GameObject noscopemessage;
 	
-	private bool spawned;
+	private bool spawned = false;
 
 	// Use this for initialization
-	void Start () {
-		spawned = false;
-	
-	}
 	
 	// Update is called once per frame
-	void Update () {
-	
-	}
 	
 	void OnTriggerEnter(Collider other){
-		if (other.gameObject.name == "Player" && !spawned){
-			Debug.Log ("TriggerMLG");
-			GameObject mlg = (GameObject)Instantiate(mlgHuge, new Vector3(3, 71, 4), Quaternion.identity);
-			mlg.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
+		if (other.gameObject.name == "AdvancedPlayer" && !spawned){
+			Debug.Log ("Trigger Message DO A 360 NOSCOPE");
+			//GameObject message = (GameObject)Instantiate(noscopemessage, new Vector3(38.73414f, -5.71203f, 29.17138f), Quaternion.Euler (new Vector3(0, 90f, 0)));
+			spawned = true;
 		}
 	}
 }
