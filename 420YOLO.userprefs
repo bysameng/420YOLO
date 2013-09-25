@@ -1,6 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ScoreKeeper.cs">
+    <Files>
+      <File FileName="Assets/Scripts/MLGeffects.cs" Line="177" Column="1" />
+      <File FileName="Assets/Scripts/Shoost.cs" Line="61" Column="46" />
+      <File FileName="Assets/Scripts/ScoreKeeper.cs" Line="32" Column="47" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

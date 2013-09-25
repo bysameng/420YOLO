@@ -49,7 +49,7 @@
      <Compile Include="Assets\Scripts\FPSWalkerEnhanced.cs" />
      <Compile Include="Assets\Scripts\GUITest.cs" />
      <Compile Include="Assets\Scripts\GenerateDungeon.cs" />
-     <Compile Include="Assets\Scripts\MLGeffects\MLGeffects.cs" />
+     <Compile Include="Assets\Scripts\MLGeffects.cs" />
      <Compile Include="Assets\Scripts\MouseLooker.cs" />
      <Compile Include="Assets\Scripts\RotationCounter.cs" />
      <Compile Include="Assets\Scripts\ScoreKeeper.cs" />

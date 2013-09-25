@@ -6,7 +6,6 @@ public class RotationCounter : MonoBehaviour {
 	private float rotationLast = 0f;
 	private float rotationCurrent = 0f;
 	private float rotationDelta = 0f;
-	
 	private float rotSecond = 0.5f;
 	private float rotationAgo;
 	
@@ -14,94 +13,58 @@ public class RotationCounter : MonoBehaviour {
 	private bool rotationDirection = true;
 	private bool rotationDirectionLast = false;
 	private float directionFrameCounter = 0.1f;
-	
 	private int jumpQuantity = 0;
-	
 	private bool powerAdd = true;
-	
 	private float timer = 1.0f;
 	
 	public float rotationPower = 0f;
-	public float rotationPowerLast = 0f;
-	
+	private float rotationPowerLast = 0f;
+	public float rotationPowerShot;
 	public float powerToGUI;
-	
 	public float damage;
 	
 	
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
 	public float UpdateRotation (float rotation) {
-		if (rotationPowerLast > 0){
+		if (rotationPowerLast > 0) {
 			rotSecond -= Time.deltaTime;
-			if (rotSecond <= 0){
+			if (rotSecond <= 0) {
 				rotSecond = .3f;
 				rotationPowerLast = 0f;
 			}
-				
-
 		}
 		
-		rotationDelta = Mathf.Abs(rotation);
+		rotationDelta = Mathf.Abs (rotation);
 		
-		if (Input.GetAxis("Mouse X") > 0){
+		if (Input.GetAxis ("Mouse X") > 0) {
 			rotationDirection = true;
-		}
-		else if (Input.GetAxis ("Mouse X") < 0){
+		} else if (Input.GetAxis ("Mouse X") < 0) {
 			rotationDirection = false;
 		}
 		
-		/*
-		if (rotationDirection == true)
-			rotationDelta = Mathf.Abs((rotationCurrent - rotationLast + 360f) % 360);
-		else if (rotationDirection == false)
-			rotationDelta = Mathf.Abs((rotationLast - rotationCurrent + 360f) % 360);
-		*/
-		
-		if (rotationDirection != rotationDirectionLast){
+		if (rotationDirection != rotationDirectionLast) {
 			rotationPowerLast = rotationPower;
 			rotationPower = 0f;
 			powerAdd = false;
 		}
-		
-		
-			
-		
-		if (rotationDelta < 3.0f){
+
+		if (rotationDelta < 3.0f) {
 			timer -= Time.deltaTime;
-			}
-		else timer = 1.0f;
+		} else
+			timer = 1.0f;
 		
 		rotationPower += rotationDelta;
-		/*
-		if (powerAdd){
-			
-		}
 		
-		if (!powerAdd){
-			directionFrameCounter -= Time.deltaTime;
-			timer -= Time.deltaTime;
-		}
-		
-		
-		if (directionFrameCounter <= 0){
-			powerAdd = true;
-			timer = 1.0f;
-			rotationPower = rotationDelta;
-			directionFrameCounter = 0.1f;
-		}
-		*/
-		
-		if (rotationPower < 0){
+		if (rotationPower < 0) {
 			rotationPower = rotationDelta;
 		}
 
 		
-		if (timer <= 0){
+		if (timer <= 0) {
 			timer = 1.0f;
 			rotationPower = rotationDelta;
 		}
@@ -110,24 +73,28 @@ public class RotationCounter : MonoBehaviour {
 		rotationDirectionLast = rotationDirection;
 		
 		powerToGUI = rotationPower;
-		if (rotationPowerLast > rotationPower)
+		if (rotationPowerLast > rotationPower) {
 			damage = calculatePower (rotationPowerLast);
-		else 
-			damage = calculatePower(rotationPower);
+			rotationPowerShot = rotationPowerLast;
+		} 
+		else {
+			damage = calculatePower (rotationPower);
+			rotationPowerShot = rotationPower;
+		}
 		
 		return damage;
-		
-	
+
 	}
 	
 	
-	float calculatePower(float distance){
+	
+	
+	float calculatePower (float distance) {
 		float damage;
 		if (distance <= 460)
-			damage = ((distance+300.0f)*(distance+300.0f))/2000.0f;
-		else{
-			damage = Mathf.Log10 (((0.25f) * distance - 87.2f)) * 200.0f;
-		}
+			damage = ((distance + 300.0f) * (distance + 300.0f)) / 2000.0f;
+		else damage = Mathf.Log10 (((0.25f) * distance - 87.2f)) * 200.0f;
+		
 		return damage;
 	}
 }
